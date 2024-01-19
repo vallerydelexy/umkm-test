@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enterprise extends Model {
+class Product extends Model {
     use HasFactory;
 
     /**
@@ -14,19 +14,14 @@ class Enterprise extends Model {
      * @var array<int, string>
      */
     protected $fillable = [
+        'sku',
         'name',
-        'address',
         'description',
+        'price',
         'image',
-        'owner',
-        'products',
     ];
 
-    public function owner() {
-        return $this->belongsTo(User::class, 'owner');
-    }
-
-    public function products() {
-        return $this->hasMany(Product::class, 'enterprise');
+    public function enterprises() {
+        return $this->belongsTo(Enterprise::class, 'products');
     }
 }

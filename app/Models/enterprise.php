@@ -22,15 +22,11 @@ class Enterprise extends Model {
         'products',
     ];
 
-    protected $casts = [
-        'image' => 'json',
-    ];
-
     public function owner() {
         return $this->belongsTo(User::class, 'owner');
     }
 
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'enterprise');
     }
 }

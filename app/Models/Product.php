@@ -19,14 +19,9 @@ class Product extends Model {
         'description',
         'price',
         'image',
-        'enterprise_id'
-    ];
-
-    protected $casts = [
-        'image' => 'array',
     ];
 
     public function enterprises() {
-        return $this->belongsTo(Enterprise::class);
+        return $this->belongsTo(Enterprise::class, 'products');
     }
 }

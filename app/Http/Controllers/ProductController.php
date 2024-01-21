@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Enterprise;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,10 +14,14 @@ class ProductController extends Controller {
      */
     public function index() {
         $products = Product::all();
-
         return response()->json(['data' => $products], Response::HTTP_OK);
     }
 
+    public function indexByEnterprise($enterprise_id) {
+        $products = Enterprise::find($enterprise_id)->products;
+        return response()->json(['data' => $products], Response::HTTP_OK);
+    }
+    
     /**
      * Store a newly created resource in storage.
      */

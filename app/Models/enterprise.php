@@ -20,6 +20,8 @@ class Enterprise extends Model {
         'image',
         'owner',
         'products',
+        'lat',
+        'long',
     ];
 
     protected $casts = [

@@ -14,10 +14,13 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@fawmi/vue-google-maps": "0.9.67",
         "@headlessui/vue": "^1.7.17",
         "@heroicons/vue": "^2.1.1",
         "@tailwindcss/forms": "^0.5.7",
         "@vitejs/plugin-vue": "^5.0.3",
+        "pinia": "^2.1.7",
+        "pinia-plugin-persistedstate": "^3.2.1",
         "unplugin-vue-router": "^0.7.0",
         "vue": "^3.4.15",
         "vue-router": "^4.2.5"

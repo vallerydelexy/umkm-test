@@ -26,5 +26,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::apiResource('users', UserController::class);
+Route::get('enterprises/search', [EnterpriseController::class, 'search']);
 Route::apiResource('enterprises', EnterpriseController::class);
+Route::get('products/enterprise/{enterprise_id}', [ProductController::class, 'indexByEnterprise']);
 Route::apiResource('products', ProductController::class);
+

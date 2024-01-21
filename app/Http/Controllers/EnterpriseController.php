@@ -28,6 +28,8 @@ class EnterpriseController extends Controller {
                 'description' => 'required',
                 'image' => 'required|array',
                 'owner' => 'required',
+                'lat' => 'required',
+                'long' => 'required',
             ]);
 
             $enterprise = Enterprise::create($request->all());
@@ -37,24 +39,6 @@ class EnterpriseController extends Controller {
             return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
         }
     }
-
-    // public function store(Request $request) {
-    //     try {
-    //         $request->validate([
-    //             'name' => 'required',
-    //             'address' => 'required',
-    //             'description' => 'required',
-    //             'image' => 'required',
-    //             'owner' => 'required',
-    //         ]);
-
-    //         $enterprise = Enterprise::create($request->all());
-
-    //         return response()->json(['data' => $enterprise], Response::HTTP_CREATED);
-    //     } catch (Exception $e) {
-    //         return response()->json(['error' => 'Something went wrong. Please try again.'], 500);
-    //     }
-    // }
 
     /**
      * Display the specified resource.
@@ -67,17 +51,7 @@ class EnterpriseController extends Controller {
      * Update the specified resource in storage.
      */
     public function update(Request $request, Enterprise $enterprise) {
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'description' => 'required',
-            'image' => 'required',
-            'owner' => 'required',
-            'products' => 'required',
-        ]);
-
         $enterprise->update($request->all());
-
         return response()->json(['data' => $enterprise], Response::HTTP_OK);
     }
 
@@ -88,5 +62,20 @@ class EnterpriseController extends Controller {
         $enterprise->delete();
 
         return response()->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function search(Request $request) {
+        $search = $request['q'];
+        if (!$search) {
+            $enterprise = Enterprise::all();
+            return response()->json(['data' => $enterprise], Response::HTTP_OK);
+        }
+        $enterprise = Enterprise::where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('address', 'like', '%' . $search . '%');
+        })->get();
+    
+        return response()->json(['data' => $enterprise], Response::HTTP_OK);
+        // return response()->json(['data' => $search ], Response::HTTP_OK);        
     }
 }

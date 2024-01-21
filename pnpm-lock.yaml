@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fawmi/vue-google-maps':
+    specifier: 0.9.67
+    version: 0.9.67
   '@headlessui/vue':
     specifier: ^1.7.17
     version: 1.7.17(vue@3.4.15)
@@ -17,6 +20,12 @@ dependencies:
   '@vitejs/plugin-vue':
     specifier: ^5.0.3
     version: 5.0.3(vite@5.0.12)(vue@3.4.15)
+  pinia:
+    specifier: ^2.1.7
+    version: 2.1.7(vue@3.4.15)
+  pinia-plugin-persistedstate:
+    specifier: ^3.2.1
+    version: 3.2.1(pinia@2.1.7)
   unplugin-vue-router:
     specifier: ^0.7.0
     version: 0.7.0(vue-router@4.2.5)(vue@3.4.15)
@@ -263,6 +272,17 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@fawmi/vue-google-maps@0.9.67:
+    resolution: {integrity: sha512-Ji9SiQIdg8mRLAyp0B9P3dU6EUptdrU4hDgkvelpNpWWmtEtj/bGgQvrZlJUBEBRUQhPDnkduIdKnXAvSV57Pg==}
+    dependencies:
+      '@googlemaps/markerclustererplus': 1.2.10
+    dev: false
+
+  /@googlemaps/markerclustererplus@1.2.10:
+    resolution: {integrity: sha512-HY4ev+D3kO1+9oQjtKTojxVtJIS/kSWJfry6cpKoXC97kBQc5Vguqu5x6pLnh+70N0Au+16Yl7iu4LZaIOTstw==}
+    deprecated: It is recommended to use @googlemaps/markerclusterer instead of this package.
+    dev: false
 
   /@headlessui/vue@1.7.17(vue@3.4.15):
     resolution: {integrity: sha512-hmJChv8HzKorxd9F70RGnECAwZfkvmmwOqreuKLWY/19d5qbWnSdw+DNbuA/Uo6X5rb4U5B3NrT+qBKPmjhRqw==}
@@ -1142,6 +1162,31 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
 
+  /pinia-plugin-persistedstate@3.2.1(pinia@2.1.7):
+    resolution: {integrity: sha512-MK++8LRUsGF7r45PjBFES82ISnPzyO6IZx3CH5vyPseFLZCk1g2kgx6l/nW8pEBKxxd4do0P6bJw+mUSZIEZUQ==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.1.7(vue@3.4.15)
+    dev: false
+
+  /pinia@2.1.7(vue@3.4.15):
+    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.15
+      vue-demi: 0.14.6(vue@3.4.15)
+    dev: false
+
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
@@ -1490,6 +1535,21 @@ packages:
       rollup: 4.9.5
     optionalDependencies:
       fsevents: 2.3.3
+
+  /vue-demi@0.14.6(vue@3.4.15):
+    resolution: {integrity: sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.15
+    dev: false
 
   /vue-router@4.2.5(vue@3.4.15):
     resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==}

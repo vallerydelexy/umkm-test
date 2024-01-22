@@ -100,7 +100,7 @@ const handleInputFieldChanges = (field, event, id) => {
 }
 const submitForm = async () => {
     const id = dataChanges.value.id
-    const url = `http://localhost:8000/api/${table.value}/${id ?? ''}`
+    const url = `http://localhost:8000/api/${table.value}/${id ? id : ''}`
     const requiredKeys = fields[table.value];
     const missingKeys = requiredKeys.filter(key => !(key in dataChanges.value));
     if (missingKeys.length > 0) {
@@ -112,8 +112,7 @@ const submitForm = async () => {
     console.log(data.value)
     console.log(dataChanges.value)
     try {
-        const response = await axios('/api/' + `${table.value}, ${dataChanges.value}`)
-        axios({
+        const response = await axios({
             method: dataChanges.value.id ? 'PUT' : 'POST',
             url, data: dataChanges.value
         })
